@@ -1,0 +1,17 @@
+html {
+    background-color: aqua;
+}
+
+body {
+    align-items: center;
+    height: 100%;
+    margin: 0;
+}
+
+#root {
+    height: 100%;
+}
+#canvas {
+    height: 50%;
+    border-style: solid;
+}
