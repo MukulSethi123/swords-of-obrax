@@ -1,3 +1,5 @@
+import { Fighter } from "/fighter.js";
+
 console.log("game.js");
 var socket = io();
 let realTimePos = { x: 600, y: 550 };
@@ -36,13 +38,21 @@ socket.on("get_position_data", (position) => {
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 console.log(canvas.height);
+const size = { width: 75, height: 150 };
+const playerPos = {
+  x: 100,
+  y: 100,
+};
+const player = new Fighter({ ctx, position: playerPos, size, color: "green" });
 
+console.log(player);
 const animate = () => {
+  window.requestAnimationFrame(animate);
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
   ctx.fillStyle = "blue";
   ctx.fillRect(realTimePos.x, realTimePos.y, 75, 150);
-  window.requestAnimationFrame(animate);
+  player.draw();
 };
 
 animate();
